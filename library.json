@@ -1,0 +1,17 @@
+{
+  "name": "SafeSerial",
+  "keywords": "Serial",
+  "description": "FreeRTOS task safe very simple and limited reimplementation of the Arduino Serial class",
+  "authors":
+  {
+    "name": "Olivier Perron"
+  },
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/freeasabeer/SafeSerial.git"
+  },
+  "version": "0.1.0",
+  "frameworks": "arduino",
+  "platforms": ["espressif8266", "espressif32","rpipico", "rpipicow"]
+}
