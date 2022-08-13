@@ -1,20 +1,23 @@
-#ifndef _SafeSerial_H
-#define _SafeSerial_H
+#pragma once
+
 #include <Arduino.h>
 #include <FreeRTOS.h>
 #include <semphr.h>
 
-class SafeSerial
+class SafeSerialClass
   {
     public:
-      SafeSerial();
-      virtual ~SafeSerial();
+      SafeSerialClass();
+      virtual ~SafeSerialClass();
       size_t printf(const char *fmt, ...);
       size_t print(const char *str);
+      size_t print(int var);
       size_t print(String str);
       size_t println(const char *str);
       size_t println(String str);
+      size_t println(int var);
     private:
         volatile SemaphoreHandle_t _SafeSerialSemaphore = nullptr;
   };
-#endif // SafeSerial_H
+
+extern WiFiClass WiFi;
