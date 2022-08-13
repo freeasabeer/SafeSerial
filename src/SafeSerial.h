@@ -20,4 +20,4 @@ class SafeSerialClass
         volatile SemaphoreHandle_t _SafeSerialSemaphore = nullptr;
   };
 
-extern WiFiClass WiFi;
+extern SafeSerialClass SafeSerial;
