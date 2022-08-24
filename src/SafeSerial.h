@@ -1,8 +1,14 @@
 #pragma once
 
 #include <Arduino.h>
-#include <FreeRTOS.h>
-#include <semphr.h>
+#if defined (ESP32)
+  #include <freertos/FreeRTOS.h>
+#elif defined (ARDUINO_ARCH_RP2040)
+  #include <FreeRTOS.h>
+  #include <semphr.h>
+#else
+#pragma message("Fix me !")
+#endif
 
 class SafeSerialClass
   {

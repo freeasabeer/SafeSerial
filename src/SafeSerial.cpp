@@ -1,5 +1,7 @@
 #include "SafeSerial.h"
-#include <SerialUSB.h>
+#if defined (ARDUINO_ARCH_RP2040)
+  #include <SerialUSB.h>
+#endif
 
 SafeSerialClass::SafeSerialClass() {
   _SafeSerialSemaphore = xSemaphoreCreateMutex();  // Create a mutex semaphore we will use to manage the Serial Port
