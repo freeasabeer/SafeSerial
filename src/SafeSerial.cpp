@@ -89,4 +89,24 @@ size_t SafeSerialClass::println(int var)
   return rc;
 }
 
+size_t SafeSerialClass::println()
+{
+  size_t rc;
+  if ( xSemaphoreTake( _SafeSerialSemaphore, portMAX_DELAY ) == pdTRUE ) {
+    rc = Serial.println();
+    xSemaphoreGive( _SafeSerialSemaphore );
+  }
+  return rc;
+}
+
+size_t SafeSerialClass::write(const uint8_t* buffer, size_t size)
+{
+  size_t rc;
+  if ( xSemaphoreTake( _SafeSerialSemaphore, portMAX_DELAY ) == pdTRUE ) {
+    rc = Serial.write(buffer, size);
+    xSemaphoreGive( _SafeSerialSemaphore );
+  }
+  return rc;
+}
+
 SafeSerialClass SafeSerial;
