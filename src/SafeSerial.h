@@ -27,6 +27,7 @@ class SafeSerialClass
       void flush();
     private:
         volatile SemaphoreHandle_t _SafeSerialSemaphore = nullptr;
+        char _buf[256];
   };
 
 extern SafeSerialClass SafeSerial;

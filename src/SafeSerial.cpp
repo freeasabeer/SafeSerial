@@ -16,14 +16,13 @@ SafeSerialClass::~SafeSerialClass()
 }
 
 size_t SafeSerialClass::printf(const char *fmt, ...) {
-  char buf[256];
   va_list args;
   va_start(args, fmt);
-  int rc = vsnprintf(buf, sizeof(buf), fmt, args);
+  int rc = vsnprintf(_buf, sizeof(_buf), fmt, args);
   va_end(args);
 
   if ( xSemaphoreTake( _SafeSerialSemaphore, portMAX_DELAY ) == pdTRUE ) {
-    Serial.print(buf);
+    Serial.print(_buf);
     xSemaphoreGive( _SafeSerialSemaphore );
   }
   return (size_t)rc;
