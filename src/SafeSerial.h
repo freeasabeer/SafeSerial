@@ -24,6 +24,7 @@ class SafeSerialClass
       size_t println(int var);
       size_t println();
       size_t write(const uint8_t* buffer, size_t size);
+      void flush();
     private:
         volatile SemaphoreHandle_t _SafeSerialSemaphore = nullptr;
   };

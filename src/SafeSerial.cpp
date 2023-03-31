@@ -109,4 +109,12 @@ size_t SafeSerialClass::write(const uint8_t* buffer, size_t size)
   return rc;
 }
 
+void SafeSerialClass::flush()
+{
+  if ( xSemaphoreTake( _SafeSerialSemaphore, portMAX_DELAY ) == pdTRUE ) {
+    Serial.flush();
+    xSemaphoreGive( _SafeSerialSemaphore );
+  }
+}
+
 SafeSerialClass SafeSerial;
